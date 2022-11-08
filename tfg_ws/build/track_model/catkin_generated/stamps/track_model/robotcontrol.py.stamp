@@ -1,5 +1,4 @@
 import rospy
-from sensor_msgs.msg import Image
 from std_msgs.msg import Float64
 
 class carControl:

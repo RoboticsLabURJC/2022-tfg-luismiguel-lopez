@@ -10,7 +10,8 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
-import robotcontrol
+import rospy
+from std_msgs.msg import Float64
 
 bridge = CvBridge()
 
@@ -40,6 +41,34 @@ def convertCVtoQT(window, cv_img):
         p = convert_to_Qt_format.scaled(int(window.display_width/4), int(window.display_height/4), Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
 
+class CarControl:
+    def __init__(self):
+        self.rightRearPub = rospy.Publisher("/robot/right_rear_wheel_joint/command", Float64, queue_size=10)
+        self.leftRear2Pub = rospy.Publisher("/robot/left_rear_wheel_joint/command", Float64, queue_size=10)
+        self.leftSteeringPub = rospy.Publisher("/robot/left_steering_hinge_joint/command", Float64, queue_size=10)
+        self.rightSteeringPub = rospy.Publisher("/robot/right_steering_hinge_joint/command", Float64, queue_size=10)
+        self.rate = rospy.Rate(10) # 10hz
+
+    def drive(self, v, w):
+        print("Targeted v " + str(v))
+        print("Targeted w " + str(w))
+
+
+def fwdFunct():
+    wheelControl.drive(1,0)
+
+def bwdFunct():
+    wheelControl.drive(-1,0)
+    
+def leftFunct():
+    wheelControl.drive(0,1)
+
+def rightFunct():
+    wheelControl.drive(0,-1)
+
+def stopFunct():
+    wheelControl.drive(0,0)
+
 class InterfaceWindow():
     def __init__(self):
         self.app = QApplication([])
@@ -51,23 +80,23 @@ class InterfaceWindow():
 
     def addButtons(self):
         fwdButton = QPushButton("Forward")
-        #openButton.clicked.connect(openFunct)
+        fwdButton.clicked.connect(fwdFunct)
         self.layout.addWidget(fwdButton, 1, 0)
 
         bwdButton = QPushButton("Backwards")
-        #closeButton.clicked.connect(closeFunct)
+        bwdButton.clicked.connect(bwdFunct)
         self.layout.addWidget(bwdButton, 1, 2)
 
         stopButton = QPushButton("Stop") 
-        #stopButton.clicked.connect(stopFunct)
+        stopButton.clicked.connect(stopFunct)
         self.layout.addWidget(stopButton, 1, 1)
 
         leftButton = QPushButton("Left") 
-        #csvButton.clicked.connect(storeCsvFunct)
+        leftButton.clicked.connect(leftFunct)
         self.layout.addWidget(leftButton, 0, 1)
 
         rightButton = QPushButton("Right") 
-        #csvButton.clicked.connect(storeCsvFunct)
+        rightButton.clicked.connect(rightFunct)
         self.layout.addWidget(rightButton, 2, 1)
 
     def addImages(self):
@@ -82,7 +111,7 @@ class InterfaceWindow():
 
 rospy.init_node('interface_node')
 
-wheelControl = robotcontrol.carControl()
+wheelControl = CarControl()
 
 interface = InterfaceWindow()
 interface.addButtons()

@@ -21,7 +21,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/package.xml"
   "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/CMakeLists.txt"
   "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/package.xml"
-  "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/scripts/robotcontrol.py"
   "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/scripts/teleop.py"
   "/opt/ros/noetic/share/actionlib/cmake/actionlib-msg-extras.cmake"
   "/opt/ros/noetic/share/actionlib/cmake/actionlibConfig-version.cmake"
