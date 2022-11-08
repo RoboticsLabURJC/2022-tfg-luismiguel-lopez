@@ -1,0 +1,8 @@
+prefix=/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install
+
+Name: track_model
+Description: Description of track_model
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

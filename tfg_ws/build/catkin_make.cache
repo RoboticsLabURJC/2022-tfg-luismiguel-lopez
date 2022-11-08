@@ -1,0 +1,2 @@
+deepracer_simulation:track_model
+-DCATKIN_DEVEL_PREFIX=/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel -DCMAKE_INSTALL_PREFIX=/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install -G Unix Makefiles
