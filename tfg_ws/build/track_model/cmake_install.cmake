@@ -52,3 +52,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/track_model" TYPE FILE FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/track_model" TYPE PROGRAM FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/teleop.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/track_model" TYPE PROGRAM FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/robotcontrol.py")
+endif()
+

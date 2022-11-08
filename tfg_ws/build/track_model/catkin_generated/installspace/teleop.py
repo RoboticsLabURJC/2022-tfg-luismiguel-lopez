@@ -1,12 +1,11 @@
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QGridLayout, QSlider
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtGui
-from PyQt5.QtCore import Qt
-
 import numpy as np
 
 import rospy
 from sensor_msgs.msg import Image
+from std_msgs.msg import Float64
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
@@ -14,12 +13,12 @@ import robotcontrol
 
 bridge = CvBridge()
 
-class CameraImage:
+class Image:
     def __init__(self, interface):
-        self.topic = "/camera/image"
+        self.topic = "/camera/zed/rgb/image_rect_color"
         self.sub = rospy.Subscriber(self.topic, Image, self.cb)
         self.window = interface
-        self.label = interface.image
+        self.label = interface.chassisImgLabel
 
     def cb(self, msg):
         try:
@@ -72,7 +71,7 @@ class InterfaceWindow():
 
     def addImages(self):
         self.window.image = QLabel("Camera View")
-        self.layout.addWidget(self.window.image, 3, 1)
+        self.layout.addWidget(self.window.image, 3, 0)
 
     def executeInterface(self):
         self.window.setLayout(self.layout)
@@ -88,7 +87,7 @@ interface = InterfaceWindow()
 interface.addButtons()
 interface.addImages()
 
-image = CameraImage(interface.window)
+image = Image(interface.window)
 
 def main():
 

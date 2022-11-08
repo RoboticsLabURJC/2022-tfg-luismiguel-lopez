@@ -154,7 +154,8 @@ include_directories(
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
 
 catkin_install_python(PROGRAMS
-   scripts/interface.py
+   scripts/teleop.py
+   scripts/robotcontrol.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 
