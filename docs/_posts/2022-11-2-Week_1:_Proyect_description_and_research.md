@@ -12,3 +12,18 @@ We will be using an enviroment similar to the one the [AWS DEEPRACER](https://aw
 
 In this first week we have visited lots of sites looking for information related with the robot. The main objective was to find a track world and an appropiate car model to create a simulation and be able to start proggraming. The models found were the following:
 
+![Car and Track Models](https://user-images.githubusercontent.com/78983070/200606631-ddd94abf-cb84-48a3-8e6e-ec10365f5201.png)
+
+As we can see, the model is nowhere near the physical appearence of the AWS Deepracer, but it has its key sensors and actuators: Four mobile wheels, directional front axis and a camera to sense its surroundings.
+
+From it we have built a package where we can launch both the track and the car.
+
+## Teleoperating 
+
+The next objective will be to build a teleoperator to be able to move the car along the track. To do this, we firstly needed to acceed to the camera image. We have adapted the plugin that was already written into the URDF file of the robot to publish on the desired topic. We can collect and convert that image to openCV using a python script. 
+
+In that same script we also need to be able to generate a graphical interface for the user to be able to move the car along. That interface should include buttons to manage the power of the car as well as the direction.
+
+The problem we are facing at the moment involves implementing the controller for the wheels, as the topic where the data should be published to move the wheels is not appearing. 
+
+Next week we will be hoping to solve this problem and finish up the teleoperator.
