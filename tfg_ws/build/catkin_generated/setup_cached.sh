@@ -8,3 +8,4 @@
 
 # modified environment variables
 export PWD='/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build'
+export PYTHONPATH="/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel/lib/python3/dist-packages:$PYTHONPATH"

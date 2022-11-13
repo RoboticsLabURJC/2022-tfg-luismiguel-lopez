@@ -7,7 +7,7 @@
     <arg name="world" default="$(find track_model)/world/hard_track.world" />
 
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find track_model)/urdf/racecar.urdf'" />
-    <node name="my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model racecar -x 2 -y 2 -z 0.5" />
+    <node name="my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model racecar -x 3 -y 0.6 -z 0.5" />
     <!-- loads the controllers -->
     <rosparam file="$(find track_model)/config/racecar_config.yaml" command="load" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/racecar" args="joint_state_controller left_direction_controller right_direction_controller right_rear_controller left_rear_controller" />

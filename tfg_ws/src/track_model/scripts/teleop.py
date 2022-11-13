@@ -5,13 +5,15 @@ from PyQt5.QtCore import Qt
 
 import numpy as np
 
-import rospy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
 import rospy
 from std_msgs.msg import Float64
+
+import time
+#import control
 
 bridge = CvBridge()
 
@@ -43,30 +45,42 @@ def convertCVtoQT(window, cv_img):
 
 class CarControl:
     def __init__(self):
-        self.rightRearPub = rospy.Publisher("/robot/right_rear_wheel_joint/command", Float64, queue_size=10)
-        self.leftRear2Pub = rospy.Publisher("/robot/left_rear_wheel_joint/command", Float64, queue_size=10)
-        self.leftSteeringPub = rospy.Publisher("/robot/left_steering_hinge_joint/command", Float64, queue_size=10)
-        self.rightSteeringPub = rospy.Publisher("/robot/right_steering_hinge_joint/command", Float64, queue_size=10)
+        self.rightRearPub = rospy.Publisher("/racecar/right_rear_controller/command", Float64, queue_size=10)
+        self.leftRearPub = rospy.Publisher("/racecar/left_rear_controller/command", Float64, queue_size=10)
+        self.leftSteeringPub = rospy.Publisher("/racecar/left_steering_controller/command", Float64, queue_size=10)
+        self.rightSteeringPub = rospy.Publisher("/racecar/right_steering_controller/command", Float64, queue_size=10)
         self.rate = rospy.Rate(10) # 10hz
 
     def drive(self, v, w):
+        linearMsg = Float64()
+        linearMsg.data = float(v)
         print("Targeted v " + str(v))
         print("Targeted w " + str(w))
-
+        self.rightRearPub.publish(linearMsg)
+        self.leftRearPub.publish(linearMsg)
+        self.rate.sleep()
 
 def fwdFunct():
-    wheelControl.drive(1,0)
+    startedT = time.time()
+    while time.time() - startedT < 5:
+        wheelControl.drive(20,0)
+        
+    wheelControl.drive(0,0)
 
 def bwdFunct():
     wheelControl.drive(-1,0)
+    wheelControl.drive(0,0)
     
 def leftFunct():
     wheelControl.drive(0,1)
+    wheelControl.drive(0,0)
 
 def rightFunct():
     wheelControl.drive(0,-1)
-
+    wheelControl.drive(0,0)
+ 
 def stopFunct():
+    wheelControl.drive(0,0)
     wheelControl.drive(0,0)
 
 class InterfaceWindow():
@@ -81,11 +95,11 @@ class InterfaceWindow():
     def addButtons(self):
         fwdButton = QPushButton("Forward")
         fwdButton.clicked.connect(fwdFunct)
-        self.layout.addWidget(fwdButton, 1, 0)
+        self.layout.addWidget(fwdButton, 0, 1)
 
         bwdButton = QPushButton("Backwards")
         bwdButton.clicked.connect(bwdFunct)
-        self.layout.addWidget(bwdButton, 1, 2)
+        self.layout.addWidget(bwdButton, 2, 1)
 
         stopButton = QPushButton("Stop") 
         stopButton.clicked.connect(stopFunct)
@@ -93,11 +107,11 @@ class InterfaceWindow():
 
         leftButton = QPushButton("Left") 
         leftButton.clicked.connect(leftFunct)
-        self.layout.addWidget(leftButton, 0, 1)
+        self.layout.addWidget(leftButton, 1, 0)
 
         rightButton = QPushButton("Right") 
         rightButton.clicked.connect(rightFunct)
-        self.layout.addWidget(rightButton, 2, 1)
+        self.layout.addWidget(rightButton, 1, 2)
 
     def addImages(self):
         self.window.image = QLabel("Camera View")
