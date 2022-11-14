@@ -43,43 +43,53 @@ def convertCVtoQT(window, cv_img):
         p = convert_to_Qt_format.scaled(int(window.display_width/4), int(window.display_height/4), Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
 
+
 class CarControl:
     def __init__(self):
         self.rightRearPub = rospy.Publisher("/racecar/right_rear_controller/command", Float64, queue_size=10)
         self.leftRearPub = rospy.Publisher("/racecar/left_rear_controller/command", Float64, queue_size=10)
+        self.rightFrontPub = rospy.Publisher("/racecar/right_front_controller/command", Float64, queue_size=10)
+        self.leftFrontPub = rospy.Publisher("/racecar/left_front_controller/command", Float64, queue_size=10)
+
         self.leftSteeringPub = rospy.Publisher("/racecar/left_steering_controller/command", Float64, queue_size=10)
         self.rightSteeringPub = rospy.Publisher("/racecar/right_steering_controller/command", Float64, queue_size=10)
         self.rate = rospy.Rate(10) # 10hz
 
-    def drive(self, v, w):
+    def linearDrive(self, v):
         linearMsg = Float64()
         linearMsg.data = float(v)
-        print("Targeted v " + str(v))
-        print("Targeted w " + str(w))
         self.rightRearPub.publish(linearMsg)
         self.leftRearPub.publish(linearMsg)
+        self.rightFrontPub.publish(linearMsg)
+        self.leftFrontPub.publish(linearMsg)
 
+    def angularDrive(self, w):
+        leftMsg = Float64()
+        leftMsg.data = float(w)
+        rightMsg = Float64()
+        rightMsg.data = float(-w)
+        self.leftSteeringPub.publish(leftMsg)
+        self.rightSteeringPub.publish(rightMsg)
+
+
+    def drive(self, v, w):
+        self.linearDrive(v)
+        self.angularDrive(w)
+        self.rate.sleep()
 
 def fwdFunct():
-    startedT = time.time()
-    while time.time() - startedT < 5:
-        wheelControl.drive(20,0)
-    wheelControl.drive(0,0)
-    
+    wheelControl.drive(1,0)
+        
 def bwdFunct():
     wheelControl.drive(-1,0)
-    wheelControl.drive(0,0)
     
 def leftFunct():
     wheelControl.drive(0,1)
-    wheelControl.drive(0,0)
 
 def rightFunct():
     wheelControl.drive(0,-1)
-    wheelControl.drive(0,0)
  
 def stopFunct():
-    wheelControl.drive(0,0)
     wheelControl.drive(0,0)
 
 class InterfaceWindow():
@@ -87,7 +97,7 @@ class InterfaceWindow():
         self.app = QApplication([])
         self.window = QWidget()
         self.layout = QGridLayout()
-        self.window.setWindowTitle("Controller Interface")
+        self.window.setWindowTitle("Teleop Interface")
         self.window.display_width = 640
         self.window.display_height = 480
 
@@ -133,8 +143,8 @@ interface.addImages()
 image = CameraImage(interface.window)
 
 def main():
-
     interface.executeInterface()
+    rospy.spin()
 
 if __name__ == '__main__':
     main()
