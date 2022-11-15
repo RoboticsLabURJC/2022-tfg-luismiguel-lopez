@@ -1,0 +1,9 @@
+Issues:
+Car moving on its own
+
+
+relanzar en otro directorio descargando de nuevo
+
+fichero topics
+
+rospy spin

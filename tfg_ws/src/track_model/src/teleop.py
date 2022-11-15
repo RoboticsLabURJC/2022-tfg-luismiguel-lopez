@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QGridLayout, QSlider
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QGridLayout, QSlider, QCheckBox
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
@@ -12,8 +12,12 @@ import cv2
 import rospy
 from std_msgs.msg import Float64
 
-import time
+import time, math
 #import control
+
+DEFAULT_SPEED = 10
+
+
 
 bridge = CvBridge()
 
@@ -51,8 +55,8 @@ class CarControl:
         self.rightFrontPub = rospy.Publisher("/racecar/right_front_controller/command", Float64, queue_size=10)
         self.leftFrontPub = rospy.Publisher("/racecar/left_front_controller/command", Float64, queue_size=10)
 
-        self.leftSteeringPub = rospy.Publisher("/racecar/left_steering_controller/command", Float64, queue_size=10)
-        self.rightSteeringPub = rospy.Publisher("/racecar/right_steering_controller/command", Float64, queue_size=10)
+        self.leftSteeringPub = rospy.Publisher("/racecar/left_direction_controller/command", Float64, queue_size=10)
+        self.rightSteeringPub = rospy.Publisher("/racecar/right_direction_controller/command", Float64, queue_size=10)
         self.rate = rospy.Rate(10) # 10hz
 
     def linearDrive(self, v):
@@ -60,37 +64,49 @@ class CarControl:
         linearMsg.data = float(v)
         self.rightRearPub.publish(linearMsg)
         self.leftRearPub.publish(linearMsg)
-        self.rightFrontPub.publish(linearMsg)
         self.leftFrontPub.publish(linearMsg)
+        self.rightFrontPub.publish(linearMsg)
 
     def angularDrive(self, w):
-        leftMsg = Float64()
-        leftMsg.data = float(w)
-        rightMsg = Float64()
-        rightMsg.data = float(-w)
-        self.leftSteeringPub.publish(leftMsg)
-        self.rightSteeringPub.publish(rightMsg)
+        msg = Float64()
+        msg.data = float(w)
+        self.leftSteeringPub.publish(msg)
+        self.rightSteeringPub.publish(msg)
 
 
     def drive(self, v, w):
         self.linearDrive(v)
         self.angularDrive(w)
-        #self.rate.sleep()
+        self.rate.sleep()
 
 def fwdFunct():
-    wheelControl.drive(1,0)
+    wheelControl.drive(DEFAULT_SPEED,0)
+    time.sleep(1)
+    wheelControl.drive(0,0)
         
 def bwdFunct():
-    wheelControl.drive(-1,0)
+    wheelControl.drive(-DEFAULT_SPEED,0)
+    time.sleep(1)
+    wheelControl.drive(0,0)
     
 def leftFunct():
     wheelControl.drive(0,1)
+    time.sleep(1)
+    wheelControl.drive(0,0)
 
 def rightFunct():
     wheelControl.drive(0,-1)
+    time.sleep(1)
+    wheelControl.drive(0,0)
  
 def stopFunct():
     wheelControl.drive(0,0)
+
+def ccFunct(butt):
+    if not butt.isChecked():
+        wheelControl.drive(0,0)
+    else:
+        wheelControl.drive(DEFAULT_SPEED,0)
 
 class InterfaceWindow():
     def __init__(self):
@@ -122,6 +138,25 @@ class InterfaceWindow():
         rightButton.clicked.connect(rightFunct)
         self.layout.addWidget(rightButton, 1, 2)
 
+        ccCheckBox = QCheckBox("Cruise Control")
+        ccCheckBox.setChecked(False)
+        ccCheckBox.stateChanged.connect(lambda:ccFunct(ccCheckBox))
+        self.layout.addWidget(ccCheckBox, 1, 3)
+
+    def treatValue(self):
+        wheelControl.angularDrive(math.radians(self.directionalSlider.value()))
+
+    def addSliders(self):
+        self.directionalSlider = QSlider(Qt.Horizontal)
+        self.directionalSlider.setMinimum(-30)
+        self.directionalSlider.setMaximum(30)
+        self.directionalSlider.setValue(0)
+        self.directionalSlider.setTickPosition(QSlider.TicksBelow)
+        self.directionalSlider.setTickInterval(1)
+        self.layout.addWidget(self.directionalSlider, 2, 3)
+        self.directionalSlider.valueChanged.connect(self.treatValue)
+
+
     def addImages(self):
         self.window.image = QLabel("Camera View")
         self.layout.addWidget(self.window.image, 3, 1)
@@ -139,6 +174,7 @@ wheelControl = CarControl()
 interface = InterfaceWindow()
 interface.addButtons()
 interface.addImages()
+interface.addSliders()
 
 image = CameraImage(interface.window)
 
