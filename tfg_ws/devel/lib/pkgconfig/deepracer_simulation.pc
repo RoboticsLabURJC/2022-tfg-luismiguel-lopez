@@ -1,4 +1,4 @@
-prefix=/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel
+prefix=/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel
 
 Name: deepracer_simulation
 Description: Description of deepracer_simulation

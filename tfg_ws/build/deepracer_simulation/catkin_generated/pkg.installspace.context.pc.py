@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "deepracer_simulation"
-PROJECT_SPACE_DIR = "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install"
+PROJECT_SPACE_DIR = "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install"
 PROJECT_VERSION = "1.2.0"

@@ -1,8 +1,8 @@
-# Install script for directory: /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation
+# Install script for directory: /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,51 +37,56 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulation.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulation.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/cmake" TYPE FILE FILES
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulationConfig.cmake"
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulationConfig-version.cmake"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulationConfig.cmake"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/deepracer_simulation/catkin_generated/installspace/deepracer_simulationConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation" TYPE FILE FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation" TYPE FILE FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/deepracer_simulation" TYPE PROGRAM FILES
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/servo_commands.py"
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_local_rl_agent.sh"
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_rollout_rl_agent.sh"
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_evaluation_rl_agent.sh"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/servo_commands.py"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_local_rl_agent.sh"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_rollout_rl_agent.sh"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/scripts/run_evaluation_rl_agent.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/launch" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/launch/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/launch" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/launch/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/config" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/config/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/config" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/config/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/meshes" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/meshes/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/meshes" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/meshes/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/models" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/models/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/models" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/models/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/urdf" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/urdf/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/urdf" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/urdf/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/worlds" TYPE DIRECTORY FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/worlds/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/deepracer_simulation/worlds" TYPE DIRECTORY FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/deepracer_simulation/worlds/")
 endif()
 

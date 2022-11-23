@@ -1,7 +1,0 @@
-setup.py
-src/control/__init__.py
-src/control/control.py
-src/track_model.egg-info/PKG-INFO
-src/track_model.egg-info/SOURCES.txt
-src/track_model.egg-info/dependency_links.txt
-src/track_model.egg-info/top_level.txt

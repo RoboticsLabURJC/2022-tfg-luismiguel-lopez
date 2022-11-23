@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build'
+export PWD='/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build'

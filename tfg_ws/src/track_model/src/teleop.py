@@ -1,29 +1,30 @@
+#!/usr/bin/env python3
+
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QGridLayout, QSlider, QCheckBox
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-
-import numpy as np
 
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
 import rospy
-from std_msgs.msg import Float64
 
-import time, math
-#import control
+import time
+from track_model import control, topics
 
 DEFAULT_SPEED = 10
+DEFAULT_ANGULAR_SPEED = 5
 
-
+RECT_ANGLE_TURN_WAIT = 0.8
+LINEAR_WAIT = 1
 
 bridge = CvBridge()
 
 class CameraImage:
     def __init__(self, interface):
-        self.topic = "/camera/image"
+        self.topic = topics.CAMERA_TOPIC
         self.sub = rospy.Subscriber(self.topic, Image, self.cb)
         self.window = interface
         self.label = interface.image
@@ -47,56 +48,24 @@ def convertCVtoQT(window, cv_img):
         p = convert_to_Qt_format.scaled(int(window.display_width/4), int(window.display_height/4), Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
 
-
-class CarControl:
-    def __init__(self):
-        self.rightRearPub = rospy.Publisher("/racecar/right_rear_controller/command", Float64, queue_size=10)
-        self.leftRearPub = rospy.Publisher("/racecar/left_rear_controller/command", Float64, queue_size=10)
-        self.rightFrontPub = rospy.Publisher("/racecar/right_front_controller/command", Float64, queue_size=10)
-        self.leftFrontPub = rospy.Publisher("/racecar/left_front_controller/command", Float64, queue_size=10)
-
-        self.leftSteeringPub = rospy.Publisher("/racecar/left_direction_controller/command", Float64, queue_size=10)
-        self.rightSteeringPub = rospy.Publisher("/racecar/right_direction_controller/command", Float64, queue_size=10)
-        self.rate = rospy.Rate(10) # 10hz
-
-    def linearDrive(self, v):
-        linearMsg = Float64()
-        linearMsg.data = float(v)
-        self.rightRearPub.publish(linearMsg)
-        self.leftRearPub.publish(linearMsg)
-        self.leftFrontPub.publish(linearMsg)
-        self.rightFrontPub.publish(linearMsg)
-
-    def angularDrive(self, w):
-        msg = Float64()
-        msg.data = float(w)
-        self.leftSteeringPub.publish(msg)
-        self.rightSteeringPub.publish(msg)
-
-
-    def drive(self, v, w):
-        self.linearDrive(v)
-        self.angularDrive(w)
-        self.rate.sleep()
-
 def fwdFunct():
     wheelControl.drive(DEFAULT_SPEED,0)
-    time.sleep(1)
+    time.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
         
 def bwdFunct():
     wheelControl.drive(-DEFAULT_SPEED,0)
-    time.sleep(1)
+    time.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
     
 def leftFunct():
-    wheelControl.drive(0,1)
-    time.sleep(1)
+    wheelControl.drive(0,DEFAULT_ANGULAR_SPEED)
+    time.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
 
 def rightFunct():
-    wheelControl.drive(0,-1)
-    time.sleep(1)
+    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
+    time.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
  
 def stopFunct():
@@ -144,18 +113,17 @@ class InterfaceWindow():
         self.layout.addWidget(ccCheckBox, 1, 3)
 
     def treatValue(self):
-        wheelControl.angularDrive(math.radians(self.directionalSlider.value()))
+        wheelControl.inputSteeringAngle(self.directionalSlider.value())
 
     def addSliders(self):
         self.directionalSlider = QSlider(Qt.Horizontal)
-        self.directionalSlider.setMinimum(-30)
-        self.directionalSlider.setMaximum(30)
+        self.directionalSlider.setMinimum(-45)
+        self.directionalSlider.setMaximum(45)
         self.directionalSlider.setValue(0)
         self.directionalSlider.setTickPosition(QSlider.TicksBelow)
         self.directionalSlider.setTickInterval(1)
         self.layout.addWidget(self.directionalSlider, 2, 3)
         self.directionalSlider.valueChanged.connect(self.treatValue)
-
 
     def addImages(self):
         self.window.image = QLabel("Camera View")
@@ -169,7 +137,7 @@ class InterfaceWindow():
 
 rospy.init_node('interface_node')
 
-wheelControl = CarControl()
+wheelControl = control.CarControl()
 
 interface = InterfaceWindow()
 interface.addButtons()

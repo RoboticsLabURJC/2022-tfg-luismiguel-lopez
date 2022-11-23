@@ -1,8 +1,8 @@
-# Install script for directory: /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model
+# Install script for directory: /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,26 +37,31 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_model.pc")
+  include("/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/safe_execute_install.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_model.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/track_model/cmake" TYPE FILE FILES
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_modelConfig.cmake"
-    "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_modelConfig-version.cmake"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_modelConfig.cmake"
+    "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/track_modelConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/track_model" TYPE FILE FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/track_model" TYPE FILE FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/safe_execute_install.cmake")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/track_model" TYPE PROGRAM FILES "/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/teleop.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/track_model" TYPE PROGRAM FILES "/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/build/track_model/catkin_generated/installspace/teleop.py")
 endif()
 

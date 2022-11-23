@@ -7,7 +7,9 @@ project(track_model)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+  rospy
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -98,6 +100,9 @@ find_package(catkin REQUIRED)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
+
+catkin_python_setup()
+
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES track_model
@@ -152,10 +157,10 @@ include_directories(
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
-catkin_python_setup()
+
 
 catkin_install_python(PROGRAMS
-   scripts/teleop.py
+   src/teleop.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

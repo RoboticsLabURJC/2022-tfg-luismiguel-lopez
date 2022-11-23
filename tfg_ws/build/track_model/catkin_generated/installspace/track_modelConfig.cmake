@@ -67,14 +67,14 @@ set(track_model_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(track_model_SOURCE_PREFIX /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model)
-  set(track_model_DEVEL_PREFIX /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel)
+  set(track_model_SOURCE_PREFIX /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model)
+  set(track_model_DEVEL_PREFIX /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel)
   set(track_model_INSTALL_PREFIX "")
   set(track_model_PREFIX ${track_model_DEVEL_PREFIX})
 else()
   set(track_model_SOURCE_PREFIX "")
   set(track_model_DEVEL_PREFIX "")
-  set(track_model_INSTALL_PREFIX /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install)
+  set(track_model_INSTALL_PREFIX /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install)
   set(track_model_PREFIX ${track_model_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install/lib;/home/luismi/Desktop/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/install/lib;/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
