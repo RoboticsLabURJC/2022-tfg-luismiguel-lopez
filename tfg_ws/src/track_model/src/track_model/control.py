@@ -17,6 +17,7 @@ class CarControl:
 
         self.leftSteeringPub = rospy.Publisher(topics.LEFT_DIRECTION_TOPIC, Float64, queue_size=10)
         self.rightSteeringPub = rospy.Publisher(topics.RIGHT_DIRECTION_TOPIC, Float64, queue_size=10)
+        self.rate = rospy.Rate(10) # 10hz
 
     def linearDrive(self, v):
         linearMsg = Float64()
@@ -44,3 +45,4 @@ class CarControl:
     def drive(self, v, w):
         self.linearDrive(v)
         self.angularDrive(w)
+        self.rate.sleep()

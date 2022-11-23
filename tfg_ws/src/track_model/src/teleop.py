@@ -59,12 +59,12 @@ def bwdFunct():
     wheelControl.drive(0,0)
     
 def leftFunct():
-    wheelControl.drive(0,DEFAULT_ANGULAR_SPEED)
+    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
     time.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
 
 def rightFunct():
-    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
+    wheelControl.drive(0, DEFAULT_ANGULAR_SPEED)
     time.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
  
@@ -73,9 +73,9 @@ def stopFunct():
 
 def ccFunct(butt):
     if not butt.isChecked():
-        wheelControl.drive(0,0)
+        wheelControl.linearDrive(0)
     else:
-        wheelControl.drive(DEFAULT_SPEED,0)
+        wheelControl.linearDrive(DEFAULT_SPEED)
 
 class InterfaceWindow():
     def __init__(self):
