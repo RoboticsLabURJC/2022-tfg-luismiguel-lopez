@@ -50,22 +50,22 @@ def convertCVtoQT(window, cv_img):
 
 def fwdFunct():
     wheelControl.drive(DEFAULT_SPEED,0)
-    time.sleep(LINEAR_WAIT)
+    rospy.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
         
 def bwdFunct():
     wheelControl.drive(-DEFAULT_SPEED,0)
-    time.sleep(LINEAR_WAIT)
+    rospy.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
     
 def leftFunct():
     wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
-    time.sleep(RECT_ANGLE_TURN_WAIT)
+    rospy.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
 
 def rightFunct():
     wheelControl.drive(0, DEFAULT_ANGULAR_SPEED)
-    time.sleep(RECT_ANGLE_TURN_WAIT)
+    rospy.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
  
 def stopFunct():

@@ -22,8 +22,7 @@ class CarControl:
     def linearDrive(self, v):
         linearMsg = Float64()
         linearMsg.data = float(v)
-        self.rightRearPub.publish(linearMsg)
-        self.leftRearPub.publish(linearMsg) 
+       
         self.leftFrontPub.publish(linearMsg)
         self.rightFrontPub.publish(linearMsg)
 
