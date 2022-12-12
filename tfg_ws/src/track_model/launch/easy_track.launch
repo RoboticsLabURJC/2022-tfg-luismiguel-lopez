@@ -4,7 +4,7 @@
  <arg name="debug" default="false" />
  <arg name="gui" default="true" />
  <arg name="pause" default="false" />
- <arg name="world" default="$(find track_model)/world/easy_track.world" />
+ <arg name="world" default="$(find track_model)/worlds/easy_track.world" />
  <!-- incluse gazebo_ros launcher -->
  <include file="$(find gazebo_ros)/launch/empty_world.launch">
  <arg name="world_name" value="$(arg world)"/>

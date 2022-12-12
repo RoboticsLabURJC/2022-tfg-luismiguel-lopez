@@ -10,10 +10,9 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
 import rospy
-from std_msgs.msg import Float64
 
-import time, math
-import topics
+import time
+from track_model import control, topics
 
 DEFAULT_SPEED = 10
 DEFAULT_ANGULAR_SPEED = 5
@@ -21,25 +20,25 @@ DEFAULT_ANGULAR_SPEED = 5
 RECT_ANGLE_TURN_WAIT = 0.8
 LINEAR_WAIT = 1
 
-LINEAR_CONSTANT = 5
-ANGLE_MULTIPLYER = 15
-
-
 bridge = CvBridge()
 
 class CameraImage:
     def __init__(self, interface):
-        self.topic = "/camera/image"
+        self.topic = topics.CAMERA_TOPIC
         self.sub = rospy.Subscriber(self.topic, Image, self.cb)
         self.window = interface
         self.label = interface.image
+        self.lastImageT = time.time() 
 
     def cb(self, msg):
         try:
         # Convert your ROS Image message to OpenCV2
             cvImg = bridge.imgmsg_to_cv2(msg, "bgr8")
+            fps = 1/(time.time() - self.lastImageT)
+            cv2.putText(cvImg,"Image Framerate:" + str(round(fps,2)) ,(40,40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
             qtImg = convertCVtoQT(self.window, cvImg)
             self.label.setPixmap(qtImg)
+            self.lastImageT = time.time()
         except CvBridgeError:
             print("ERROR")
 
@@ -50,67 +49,27 @@ def convertCVtoQT(window, cv_img):
         h, w, ch = rgb_image.shape
         bytes_per_line = ch * w
         convert_to_Qt_format = QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
-        p = convert_to_Qt_format.scaled(int(window.display_width/4), int(window.display_height/4), Qt.KeepAspectRatio)
+        p = convert_to_Qt_format.scaled(int(window.display_width/2), int(window.display_height/2), Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
-
-
-class CarControl:
-    def __init__(self):
-        self.rightRearPub = rospy.Publisher(topics.RIGHT_REAR_TOPIC, Float64, queue_size=10)
-        self.leftRearPub = rospy.Publisher(topics.LEFT_REAR_TOPIC, Float64, queue_size=10)
-        self.rightFrontPub = rospy.Publisher(topics.RIGHT_FRONT_TOPIC, Float64, queue_size=10)
-        self.leftFrontPub = rospy.Publisher(topics.LEFT_FRONT_TOPIC, Float64, queue_size=10)
-
-        self.leftSteeringPub = rospy.Publisher(topics.LEFT_DIRECTION_TOPIC, Float64, queue_size=10)
-        self.rightSteeringPub = rospy.Publisher(topics.RIGHT_DIRECTION_TOPIC, Float64, queue_size=10)
-        self.rate = rospy.Rate(10) # 10hz
-
-    def linearDrive(self, v):
-        linearMsg = Float64()
-        linearMsg.data = float(v)
-        self.rightRearPub.publish(linearMsg)
-        self.leftRearPub.publish(linearMsg) 
-        self.leftFrontPub.publish(linearMsg)
-        self.rightFrontPub.publish(linearMsg)
-
-    def inputSteeringAngle(self, angle):
-        rads = -1 * math.radians(angle)
-        msg = Float64()
-        msg.data = float(rads)
-        self.leftSteeringPub.publish(msg)
-        self.rightSteeringPub.publish(msg)
-        
-    def angularDrive(self, w):
-        angle = w * ANGLE_MULTIPLYER
-        self.inputSteeringAngle(angle)
-        time.sleep(0.5)
-        
-        linearSpeed = abs(w * LINEAR_CONSTANT)
-        self.linearDrive(linearSpeed)
-        
-    def drive(self, v, w):
-        self.linearDrive(v)
-        self.angularDrive(w)
-        self.rate.sleep()
 
 def fwdFunct():
     wheelControl.drive(DEFAULT_SPEED,0)
-    time.sleep(LINEAR_WAIT)
+    rospy.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
         
 def bwdFunct():
     wheelControl.drive(-DEFAULT_SPEED,0)
-    time.sleep(LINEAR_WAIT)
+    rospy.sleep(LINEAR_WAIT)
     wheelControl.drive(0,0)
     
 def leftFunct():
-    wheelControl.drive(0,DEFAULT_ANGULAR_SPEED)
-    time.sleep(RECT_ANGLE_TURN_WAIT)
+    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
+    rospy.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
 
 def rightFunct():
-    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
-    time.sleep(RECT_ANGLE_TURN_WAIT)
+    wheelControl.drive(0, DEFAULT_ANGULAR_SPEED)
+    rospy.sleep(RECT_ANGLE_TURN_WAIT)
     wheelControl.drive(0,0)
  
 def stopFunct():
@@ -118,9 +77,9 @@ def stopFunct():
 
 def ccFunct(butt):
     if not butt.isChecked():
-        wheelControl.drive(0,0)
+        wheelControl.linearDrive(0)
     else:
-        wheelControl.drive(DEFAULT_SPEED,0)
+        wheelControl.linearDrive(DEFAULT_SPEED)
 
 class InterfaceWindow():
     def __init__(self):
@@ -182,7 +141,7 @@ class InterfaceWindow():
 
 rospy.init_node('interface_node')
 
-wheelControl = CarControl()
+wheelControl = control.CarControl()
 
 interface = InterfaceWindow()
 interface.addButtons()

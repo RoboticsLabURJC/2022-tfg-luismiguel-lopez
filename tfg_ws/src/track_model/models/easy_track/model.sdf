@@ -30,7 +30,7 @@
         <material>
 		  <script>
 		    <uri>model://track_model/meshes/easy_track/scripts</uri>
-            <uri>model://deepracer_simulation/meshes/easy_track/textures</uri>
+            <uri>model://track_model/meshes/easy_track/textures</uri>
             <name>easy_track/Image</name>
 		  </script>
         </material>

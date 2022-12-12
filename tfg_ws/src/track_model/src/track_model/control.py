@@ -35,9 +35,7 @@ class CarControl:
         
     def angularDrive(self, w):
         angle = w * ANGLE_MULTIPLYER
-        self.inputSteeringAngle(angle)
-        sleep(0.5)
-        
+        self.inputSteeringAngle(angle)        
         linearSpeed = abs(w * LINEAR_CONSTANT)
         self.linearDrive(linearSpeed)
         
