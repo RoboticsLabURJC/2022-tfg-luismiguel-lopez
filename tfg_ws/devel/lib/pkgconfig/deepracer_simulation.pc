@@ -1,8 +1,0 @@
-prefix=/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/devel
-
-Name: deepracer_simulation
-Description: Description of deepracer_simulation
-Version: 1.2.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

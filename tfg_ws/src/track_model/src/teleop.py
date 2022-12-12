@@ -28,13 +28,17 @@ class CameraImage:
         self.sub = rospy.Subscriber(self.topic, Image, self.cb)
         self.window = interface
         self.label = interface.image
+        self.lastImageT = time.time() 
 
     def cb(self, msg):
         try:
         # Convert your ROS Image message to OpenCV2
             cvImg = bridge.imgmsg_to_cv2(msg, "bgr8")
+            fps = 1/(time.time() - self.lastImageT)
+            cv2.putText(cvImg,"Image Framerate:" + str(round(fps,2)) ,(40,40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
             qtImg = convertCVtoQT(self.window, cvImg)
             self.label.setPixmap(qtImg)
+            self.lastImageT = time.time()
         except CvBridgeError:
             print("ERROR")
 
@@ -45,7 +49,7 @@ def convertCVtoQT(window, cv_img):
         h, w, ch = rgb_image.shape
         bytes_per_line = ch * w
         convert_to_Qt_format = QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
-        p = convert_to_Qt_format.scaled(int(window.display_width/4), int(window.display_height/4), Qt.KeepAspectRatio)
+        p = convert_to_Qt_format.scaled(int(window.display_width/2), int(window.display_height/2), Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
 
 def fwdFunct():

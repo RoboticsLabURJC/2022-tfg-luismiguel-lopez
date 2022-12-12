@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <rect
+       x="515.73346"
+       y="235.95341"
+       width="294.73404"
+       height="42.308277"
+       id="rect13794" />
+    <rect
+       x="441.18198"
+       y="344.24454"
+       width="237.86221"
+       height="67.854996"
+       id="rect13703" />
+    <rect
+       x="252.48775"
+       y="349.9671"
+       width="104.74976"
+       height="106.52166"
+       id="rect13679" />
+    <rect
+       x="450.09958"
+       y="245.70522"
+       width="249.84949"
+       height="135.24081"
+       id="rect8726" />
+    <rect
+       x="377.1091"
+       y="134.28819"
+       width="181.29588"
+       height="23.51292"
+       id="rect5704" />
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+    <rect
+       x="313.34738"
+       y="175.67642"
+       width="144.94279"
+       height="44.834988"
+       id="rect3144" />
+    <rect
+       x="264.78824"
+       y="87.05101"
+       width="298.03122"
+       height="54.381802"
+       id="rect1576" />
+    <rect
+       x="264.78824"
+       y="87.05101"
+       width="298.03122"
+       height="54.381802"
+       id="rect1576-3" />
+    <marker
+       style="overflow:visible"
+       id="TriangleStart-5"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleStart-5-6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-3-2" />
+    </marker>
+    <rect
+       x="264.78824"
+       y="87.05101"
+       width="298.03122"
+       height="54.381802"
+       id="rect1576-3-2" />
+    <rect
+       x="264.78824"
+       y="87.05101"
+       width="140.05644"
+       height="92.260803"
+       id="rect1576-0" />
+    <rect
+       x="252.48775"
+       y="349.9671"
+       width="244.08305"
+       height="36.332005"
+       id="rect13679-6" />
+    <marker
+       style="overflow:visible"
+       id="TriangleStart-6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-2" />
+    </marker>
+    <rect
+       x="264.78824"
+       y="87.05101"
+       width="298.03122"
+       height="54.381802"
+       id="rect1576-3-1" />
+  </defs>
+  <g
+     id="layer1">
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.138089"
+       id="rect788"
+       width="32.198818"
+       height="12.316122"
+       x="80.393898"
+       y="19.442741" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,15.999884,-1.2335188)"
+       id="text1574"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect1576);fill:#ffffff;stroke:#000000"><tspan
+         x="264.78906"
+         y="109.25078"
+         id="tspan16709">TELEOP</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.237582"
+       id="rect788-9"
+       width="41.621819"
+       height="28.203457"
+       x="81.491058"
+       y="60.61285" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,17.047305,39.886843)"
+       id="text1574-3"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect1576-0);display:inline;fill:#ffffff;stroke:#000000"><tspan
+         x="264.78906"
+         y="109.25078"
+         id="tspan16711">AWS Twist </tspan><tspan
+         x="264.78906"
+         y="139.25078"
+         id="tspan16713">to Servo </tspan><tspan
+         x="264.78906"
+         y="169.25078"
+         id="tspan16715">MSG node</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.138089"
+       id="rect788-6"
+       width="32.198818"
+       height="12.316122"
+       x="102.22588"
+       y="113.59998" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.183776"
+       id="rect788-6-1"
+       width="57.241905"
+       height="12.270435"
+       x="33.13472"
+       y="112.87842" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,36.847722,92.882826)"
+       id="text1574-7"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect1576-3);display:inline;fill:#ffffff;stroke:#000000"><tspan
+         x="264.78906"
+         y="109.25078"
+         id="tspan16717">WRAPPER</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.233499"
+       id="rect788-6-8"
+       width="82.153351"
+       height="13.801929"
+       x="80.709442"
+       y="156.80324" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,15.283572,136.03839)"
+       id="text1574-7-79"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect1576-3-1);display:inline;fill:#ffffff;stroke:#000000"><tspan
+         x="264.78906"
+         y="109.25078"
+         id="tspan16719">Simulation Movement</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-35.678583,90.963418)"
+       id="text1574-7-7"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect1576-3-2);display:inline;fill:#ffffff;stroke:#000000"><tspan
+         x="264.78906"
+         y="109.25078"
+         id="tspan16721">Robot Movement</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.137658"
+       id="rect3140"
+       width="19.963253"
+       height="6.4355979"
+       x="103.97762"
+       y="45.989365" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.13394259,0,0,0.1414778,63.070391,22.337806)"
+       id="text3142"
+       style="font-size:24px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect3144);fill:#ffffff;stroke:#000000"><tspan
+         x="313.34766"
+         y="197.87578"
+         id="tspan16723">TWIST MSG</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#ffffff;stroke:#000000;stroke-width:0.264583"
+       x="115.41478"
+       y="26.545486"
+       id="text3208"><tspan
+         id="tspan3206"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="115.41478"
+         y="26.545486">Read user input</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264852;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 96.482469,31.468478 -0.01427,27.274253"
+       id="path3255" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264852;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart-6)"
+       d="m 118.89793,126.9272 -0.0143,27.27426"
+       id="path3255-6" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264852;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart-5)"
+       d="M 102.34708,88.887938 83.966863,109.03869"
+       id="path3255-5" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264852;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart-5-6)"
+       d="m 102.25243,88.862678 15.42904,22.490662"
+       id="path3255-5-9" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-0.1261261,2.9187098)"
+       id="text5702"
+       style="font-size:16px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect5704);fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="377.10938"
+         y="149.08906"
+         id="tspan16725">Publish data</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,19.940946,49.451666)"
+       id="text8724"
+       style="font-size:10.6667px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect8726);fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="450.09961"
+         y="255.57178"
+         id="tspan16727">Converts Servo MSG messages to </tspan><tspan
+         x="450.09961"
+         y="268.90515"
+         id="tspan16729">understandable information for motors </tspan><tspan
+         x="450.09961"
+         y="282.23852"
+         id="tspan16731">in our simulation</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-61.234041,20.656944)"
+       id="text13677"
+       style="font-size:10.6667px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect13679);shape-padding:0;fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="252.48828"
+         y="359.83349"
+         id="tspan16733">*Subscribed to: </tspan><tspan
+         x="252.48828"
+         y="373.16687"
+         id="tspan16735">Servo_MSG </tspan><tspan
+         x="252.48828"
+         y="386.50024"
+         id="tspan16737">ServoCTRLMsg</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,70.402429,15.859351)"
+       id="text13677-0"
+       style="font-size:10.6667px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect13679-6);display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="252.48828"
+         y="359.83349"
+         id="tspan16739">*Subscribed to: Servo_MSG ServoCTRLMsg</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,21.79062,35.551784)"
+       id="text13701"
+       style="font-size:10.6667px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect13703);fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="441.18164"
+         y="354.11084"
+         id="tspan16741">Publishes: *Simulation motor control </tspan><tspan
+         x="441.18164"
+         y="367.44421"
+         id="tspan16743">types*</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.484473,7.6954157)"
+       id="text13792"
+       style="font-size:10.6667px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;shape-inside:url(#rect13794);fill:#ffffff;stroke:#000000;stroke-width:0.922205;stroke-dasharray:none"><tspan
+         x="515.73438"
+         y="245.81982"
+         id="tspan16745">* Subscribed to: twist CMD_Vel
+</tspan><tspan
+         x="515.73438"
+         y="259.1532"
+         id="tspan16747">* Publishes: Servo_MSG ServoCTRLMsg
+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;font-family:FreeMono;-inkscape-font-specification:FreeMono;white-space:pre;inline-size:28.2399;fill:#ffffff;stroke:#000000;stroke-width:0.244;stroke-dasharray:none"
+       x="165.80327"
+       y="159.11536"
+       id="text16465"><tspan
+         x="165.80327"
+         y="159.11536"
+         id="tspan16749">Subscribed to: </tspan><tspan
+         x="165.80327"
+         y="162.64314"
+         id="tspan16751">*Simulation </tspan><tspan
+         x="165.80327"
+         y="166.17093"
+         id="tspan16753">motor control </tspan><tspan
+         x="165.80327"
+         y="169.69871"
+         id="tspan16755">types*</tspan></text>
+  </g>
+</svg>
