@@ -26,6 +26,21 @@ limitations under the License.
       <mass value="1.9068"/>
       <inertia ixx="0.004151895" ixy="0" ixz="0" iyy="0.010379737" iyz="0" izz="0.010379737"/>
     </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find track_model)/meshes/chassis.STL"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find track_model)/meshes/chassis.STL"/>
+      </geometry>
+    </collision>
+
+
   </link>
   <joint name="base_link_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.023249"/>
@@ -58,6 +73,19 @@ limitations under the License.
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="left_rear_wheel_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_rear_wheel_joint">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_rear_wheel_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
   <link name="right_rear_wheel">
     <inertial>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -77,6 +105,7 @@ limitations under the License.
       </geometry>
     </collision>
   </link>
+
   <joint name="right_rear_wheel_joint" type="continuous">
     <origin rpy="0 0 0" xyz="-0.081663 -0.08105 0.01575"/>
     <parent link="chassis"/>
@@ -84,6 +113,18 @@ limitations under the License.
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="right_rear_wheel_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_rear_wheel_joint">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_rear_wheel_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
   <link name="left_steering_hinge">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -104,6 +145,19 @@ limitations under the License.
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="left_steering_hinge_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_steering_hinge_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_steering_hinge_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
   <link name="left_front_wheel">
     <inertial>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -130,6 +184,19 @@ limitations under the License.
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="left_front_wheel_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_front_wheel_joint">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_front_wheel_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  
   <link name="right_steering_hinge">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -150,6 +217,19 @@ limitations under the License.
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="right_steering_hinge_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_steering_hinge_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_steering_hinge_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
   <link name="right_front_wheel">
     <inertial>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -169,6 +249,7 @@ limitations under the License.
       </geometry>
     </collision>
   </link>
+
   <joint name="right_front_wheel_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="right_steering_hinge"/>
@@ -176,6 +257,19 @@ limitations under the License.
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-1" upper="1" velocity="100"/>
   </joint>
+
+  <transmission name="right_front_wheel_transmission" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_front_wheel_joint">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_front_wheel_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  
   <link name="zed_camera_link">
     <inertial>
       <origin rpy="0 0 0" xyz="0.019881 0 0.034966"/>
@@ -258,6 +352,7 @@ limitations under the License.
     <child link="shell"/>
     <axis xyz="0 0 0"/>
   </joint>
+  <!--
   <gazebo reference="chassis">
     <mu1 value="0.0"/>
     <mu2 value="0.0"/>
@@ -292,6 +387,7 @@ limitations under the License.
     <kd value="1.0"/>
     <fdir1 value="1 0 0"/>
   </gazebo>
+  -->
   <gazebo reference="left_rear_wheel">
     <collision>
       <surface>
@@ -366,6 +462,7 @@ limitations under the License.
       <robot_base_frame>base_link</robot_base_frame>
     </plugin>
   </gazebo>
+  <!--
   <ros2_control name="racecar" type="system">
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -404,6 +501,7 @@ limitations under the License.
       <parameters>/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/config/agent_control.yaml</parameters>
     </plugin>
   </gazebo>
+  -->
   <gazebo reference="left_rear_wheel">
     <material>Gazebo/Black</material>
   </gazebo>
@@ -449,6 +547,7 @@ limitations under the License.
       </plugin>
     </sensor>
   </gazebo>
+  <!--
   <gazebo reference="laser">
     <sensor name="hokuyo_sensor" type="ray">
       <pose>0 0 0 0 0 0</pose>
@@ -473,18 +572,17 @@ limitations under the License.
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <!--<plugin name="gazebo_ros_hokuyo_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_hokuyo_controller" filename="libgazebo_ros_laser.so">
         <topicName>/scan</topicName>
         <frameName>laser</frameName>
-      </plugin>-->
+      </plugin>
       <plugin filename="libgazebo_ros_ray_sensor.so" name="rp_lidar">
         <ros>
-          <!-- <namespace>/laser</namespace> -->
           <argument>~/out:=scan</argument>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
         <frame_name>laser</frame_name>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo>-->
 </robot>
