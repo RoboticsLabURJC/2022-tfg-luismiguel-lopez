@@ -14,73 +14,52 @@
 #   limitations under the License.                                              #
 #################################################################################
 
+# changed from group interface to single interface for publishing sake
+# changed program hierarchy as it was not loading (ros2 issues?)
+# PIDs left as default as they should handle inertias from the model
+
 racecar:
-  ros__parameters:
-    update_rate: 60  # Hz
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 10
 
-    joint_state_controller:
-      type: joint_state_controller/JointStateController
-
-    left_rear_wheel_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
-    right_rear_wheel_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
-    left_front_wheel_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
-    right_front_wheel_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
-    left_steering_hinge_position_controller:
-      type: position_controllers/JointGroupPositionController
-
-    right_steering_hinge_position_controller:
-      type: position_controllers/JointGroupPositionController
-
-left_rear_wheel_velocity_controller:
-  ros__parameters:
-    joints:
-      - left_rear_wheel_joint
+  left_rear_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_rear_wheel_joint
     interface_name: velocity
     pid: {p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+    
 
-right_rear_wheel_velocity_controller:
-  ros__parameters:
-    joints:
-      - right_rear_wheel_joint
+  right_rear_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_rear_wheel_joint
     interface_name: velocity
     pid: {p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+    
 
-
-left_front_wheel_velocity_controller:
-  ros__parameters:
-    joints:
-      - left_front_wheel_joint
+  left_front_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_front_wheel_joint
     interface_name: velocity
     pid: {p: 0.5, i: 0.0, d: 0.0, i_clamp: 0.0}
+    
 
-
-right_front_wheel_velocity_controller:
-  ros__parameters:
-    joints:
-      - right_front_wheel_joint
+  right_front_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_front_wheel_joint
     interface_name: velocity
     pid: {p: 0.5, i: 0.0, d: 0.0, i_clamp: 0.0}
-
-
-left_steering_hinge_position_controller:
-  ros__parameters:
-    joints:
-      - left_steering_hinge_joint
+  
+  left_steering_hinge_position_controller:
+    type: position_controllers/JointPositionController
+    joint: left_steering_hinge_joint
+    interface_name: position
+    pid: {p: 1.0, i: 0.0, d: 0.5}
+    
+  right_steering_hinge_position_controller:
+    type: position_controllers/JointPositionController
+    joint: right_steering_hinge_joint
     interface_name: position
     pid: {p: 1.0, i: 0.0, d: 0.5}
 
-
-right_steering_hinge_position_controller:
-  ros__parameters:
-    joints:
-      - right_steering_hinge_joint
-    interface_name: position
-    pid: {p: 1.0, i: 0.0, d: 0.5}
+    

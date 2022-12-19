@@ -149,10 +149,10 @@ limitations under the License.
   <transmission name="left_steering_hinge_transmission" type="SimpleTransmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_steering_hinge_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="left_steering_hinge_motor">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -221,10 +221,10 @@ limitations under the License.
   <transmission name="right_steering_hinge_transmission" type="SimpleTransmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="right_steering_hinge_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="right_steering_hinge_motor">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -336,13 +336,13 @@ limitations under the License.
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find track_model)/meshes/deepracer.STL"/>
+        <mesh filename="file://$(find track_model)/meshes/deepracer_with_lidar.STL"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find track_model)/meshes/deepracer.STL"/>
+        <mesh filename="file://$(find track_model)/meshes/deepracer_with_lidar.STL"/>
       </geometry>
     </collision>
   </link>
@@ -352,7 +352,7 @@ limitations under the License.
     <child link="shell"/>
     <axis xyz="0 0 0"/>
   </joint>
-  <!--
+  
   <gazebo reference="chassis">
     <mu1 value="0.0"/>
     <mu2 value="0.0"/>
@@ -387,7 +387,7 @@ limitations under the License.
     <kd value="1.0"/>
     <fdir1 value="1 0 0"/>
   </gazebo>
-  -->
+  
   <gazebo reference="left_rear_wheel">
     <collision>
       <surface>
@@ -442,19 +442,20 @@ limitations under the License.
       </surface>
     </collision>
   </gazebo>
+  
+  <!--
   <gazebo>
     <plugin filename="libgazebo_ros_deepracer_drive.so" name="gazebo_ros_deepracer_drive">
       <update_rate>15.0</update_rate>
-      <!-- Max absolute steer angle for tyre in radians-->
-      <!-- Any cmd_vel angular z greater than this would be capped -->
+      
       <max_steer>0.523599</max_steer>
-      <!-- Max absolute linear speed in m/s -->
+    
       <max_speed>4</max_speed>
-      <!-- Radius of rear wheels, in meters -->
+      
       <wheel_radius>0.03</wheel_radius>
-      <!-- Distance between front and rear axles, in meters -->
+      
       <wheel_base>0.164023</wheel_base>
-      <!-- Distance between the wheels, in meters -->
+      
       <wheel_separation>0.159202</wheel_separation>
       <publish_odom>true</publish_odom>
       <publish_odom_tf>true</publish_odom_tf>
@@ -462,46 +463,17 @@ limitations under the License.
       <robot_base_frame>base_link</robot_base_frame>
     </plugin>
   </gazebo>
-  <!--
-  <ros2_control name="racecar" type="system">
-    <hardware>
-      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-    </hardware>
-    <joint name="left_rear_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="right_rear_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="left_front_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="right_front_wheel_joint">
-      <command_interface name="velocity"/>
-      <state_interface name="velocity"/>
-    </joint>
-    <joint name="left_steering_hinge_joint">
-      <command_interface name="position">
-      </command_interface>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="right_steering_hinge_joint">
-      <command_interface name="position">
-      </command_interface>
-      <state_interface name="position"/>
-    </joint>
-  </ros2_control>
+-->
+
   <gazebo>
-    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <robot_param>robot_description</robot_param>
-      <robot_param_node>robot_state_publisher</robot_param_node>
-      <parameters>/home/chuismi/Desktop/robotica/cuarto/tfg/2022-tfg-luismiguel-lopez/tfg_ws/src/track_model/config/agent_control.yaml</parameters>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/racecar</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
+    <plugin filename="libracecar_plugin.so" name="racecar_plugin">
+  </plugin>
   </gazebo>
-  -->
+
   <gazebo reference="left_rear_wheel">
     <material>Gazebo/Black</material>
   </gazebo>
