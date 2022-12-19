@@ -12,6 +12,7 @@ import cv2
 import rospy
 
 import time
+import math
 from track_model import control, topics
 
 DEFAULT_SPEED = 10
@@ -53,27 +54,27 @@ def convertCVtoQT(window, cv_img):
         return QPixmap.fromImage(p)
 
 def fwdFunct():
-    wheelControl.drive(DEFAULT_SPEED,0)
+    wheelControl.commandVel(DEFAULT_SPEED,0)
     rospy.sleep(LINEAR_WAIT)
-    wheelControl.drive(0,0)
+    wheelControl.commandVel(0,0)
         
 def bwdFunct():
-    wheelControl.drive(-DEFAULT_SPEED,0)
+    wheelControl.commandVel(-DEFAULT_SPEED,0)
     rospy.sleep(LINEAR_WAIT)
-    wheelControl.drive(0,0)
+    wheelControl.commandVel(0,0)
     
 def leftFunct():
-    wheelControl.drive(0, -DEFAULT_ANGULAR_SPEED)
+    wheelControl.commandVel(0, -DEFAULT_ANGULAR_SPEED)
     rospy.sleep(RECT_ANGLE_TURN_WAIT)
-    wheelControl.drive(0,0)
+    wheelControl.commandVel(0,0)
 
 def rightFunct():
-    wheelControl.drive(0, DEFAULT_ANGULAR_SPEED)
+    wheelControl.commandVel(0, DEFAULT_ANGULAR_SPEED)
     rospy.sleep(RECT_ANGLE_TURN_WAIT)
-    wheelControl.drive(0,0)
+    wheelControl.commandVel(0,0)
  
 def stopFunct():
-    wheelControl.drive(0,0)
+    wheelControl.commandVel(0,0)
 
 def ccFunct(butt):
     if not butt.isChecked():
@@ -111,13 +112,16 @@ class InterfaceWindow():
         rightButton.clicked.connect(rightFunct)
         self.layout.addWidget(rightButton, 1, 2)
 
-        ccCheckBox = QCheckBox("Cruise Control")
-        ccCheckBox.setChecked(False)
-        ccCheckBox.stateChanged.connect(lambda:ccFunct(ccCheckBox))
-        self.layout.addWidget(ccCheckBox, 1, 3)
+        self.ccCheckBox = QCheckBox("Cruise Control")
+        self.ccCheckBox.setChecked(False)
+        self.ccCheckBox.stateChanged.connect(lambda:ccFunct(self.ccCheckBox))
+        self.layout.addWidget(self.ccCheckBox, 1, 3)
 
     def treatValue(self):
-        wheelControl.inputSteeringAngle(self.directionalSlider.value())
+        if self.ccCheckBox.isChecked():
+            wheelControl.commandVel(DEFAULT_SPEED, math.radians(self.directionalSlider.value()))
+        else:
+            wheelControl.commandVel(0, math.radians(self.directionalSlider.value()))
 
     def addSliders(self):
         self.directionalSlider = QSlider(Qt.Horizontal)
